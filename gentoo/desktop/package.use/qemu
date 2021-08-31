@@ -1,0 +1,1 @@
+app-emulation/qemu aio pulseaudio doc gtk spice usb udev virgl vhost-net vnc virtfs xattr usbredir QEMU_SOFTMMU_TARGETS: x86_64 aarch64 QEMU_USER_TARGETS: x86_64
