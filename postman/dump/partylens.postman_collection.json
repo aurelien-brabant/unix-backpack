@@ -1,0 +1,522 @@
+{
+	"info": {
+		"_postman_id": "69f5bda3-d2fc-4729-84dc-b16adb252f42",
+		"name": "partylens",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null,
+						"description": "When getting users, many fields are not transmitted because they wouldn't be of any use to the client, such as `state` and `password`.\n\nThere is correctly no way to query these fields in this version of the API."
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"perso@aurelienbrabant.fr\",\n    \"name\": \"Ien Ien\",\n    \"password\": \"pass1801\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "parties",
+			"item": [
+				{
+					"name": "members",
+					"item": [
+						{
+							"name": "list party members",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "get party member",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "Add member",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/users/1/parties/19/members/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"1",
+										"parties",
+										"19",
+										"members",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit party member (mostly perms)",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/users/1/parties/19/members/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"1",
+										"parties",
+										"19",
+										"members",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete party member",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/users/1/parties/19/members/12",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"1",
+										"parties",
+										"19",
+										"members",
+										"12"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "items",
+					"item": [
+						{
+							"name": "participations",
+							"item": [
+								{
+									"name": "Get participations",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/parties/1/items/1/participations",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"parties",
+												"1",
+												"items",
+												"1",
+												"participations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Get participation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5000/parties/1/items/1/participations",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"parties",
+												"1",
+												"items",
+												"1",
+												"participations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post participation",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 5\n}"
+										},
+										"url": {
+											"raw": "http://localhost:5000/parties/1/items/1/participations",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"parties",
+												"1",
+												"items",
+												"1",
+												"participations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Post participation Copy",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"amount\": 5\n}"
+										},
+										"url": {
+											"raw": "http://localhost:5000/parties/1/items/1/participations/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"parties",
+												"1",
+												"items",
+												"1",
+												"participations",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get party items",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						},
+						{
+							"name": "get party item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/parties/1/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"parties",
+										"1",
+										"items",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete party item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImJyYWJvbnQiLCJlbWFpbCI6ImFicmFiYW50QGdtYWlsLmNvbSIsInByaXZpbGVnZSI6MCwiaWF0IjoxNjMwNDE1ODA1LCJleHAiOjE2MzA1MDIyMDV9.ue8wxV3Neop9enn_MExlgRyfFVa_aZ4Wy5vHhKwe7eM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/parties/1/items/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"parties",
+										"1",
+										"items",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "new party item",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5000/users/1/parties/1/items",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"users",
+										"1",
+										"parties",
+										"1",
+										"items"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user's parties",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null,
+						"description": "Find parties a user is involved into.\nBy default, only parties that *belong to* the user are matched (the user is the owner).\n \nDepending on use cases, options can be specified to change the party matching rules. If this is not wanted, the `strict_party_matching` query string can be set to true to ensure that only parties that the user owns are returned.\n\n# Query parameters\n\n## `populate_members`\nMember and user data about each member of the party is added to the JSON output.\nWhen specified, party is matched if the user is the owner of the party _OR_ one of its members."
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user party",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null,
+						"description": "Find parties a user is involved into.\nBy default, only parties that *belong to* the user are matched (the user is the owner).\n \nDepending on use cases, options can be specified to change the party matching rules. If this is not wanted, the `strict_party_matching` query string can be set to true to ensure that only parties that the user owns are returned.\n\n# Query parameters\n\n## `populate_members`\nMember and user data about each member of the party is added to the JSON output.\nWhen specified, party is matched if the user is the owner of the party _OR_ one of its members."
+					},
+					"response": []
+				},
+				{
+					"name": "New party",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"La soiree de la grosse ambiance\",\n    \"startDate\": \"2021-08-27T08:49:18.593Z\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/users/4/parties/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"4",
+								"parties",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch user party",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users/1/parties/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"1",
+								"parties",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete party",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/users/1/parties/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"users",
+								"1",
+								"parties",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
