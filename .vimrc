@@ -1,7 +1,7 @@
+set nocompatible
 set tabstop=4
 set shiftwidth=4
 syntax enable
-set nocompatible
 set noswapfile
 set number
 set cursorline

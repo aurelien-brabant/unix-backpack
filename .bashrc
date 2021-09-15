@@ -13,3 +13,5 @@ alias gst="git status"
 alias tmux="TERM=screen-256color tmux"
 
 export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.yarn/bin"
+
+export MYVIMRC="$HOME/.vimrc"
