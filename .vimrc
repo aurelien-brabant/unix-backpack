@@ -1,33 +1,64 @@
 set nocompatible
+set number
+set relativenumber
+syntax enable
+set wrap
+
+" Identation
 set tabstop=4
 set shiftwidth=4
-syntax enable
-set noswapfile
-set number
-set cursorline
+set showmatch
+set matchtime=2
 
-call plug#begin('~/.vim/plugged')
+" standard keybindings, using control key
 
-Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim'
-Plug 'preservim/nerdtree'
-Plug 'ryanoasis/vim-devicons'
-Plug 'kien/ctrlp.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'sainnhe/everforest'
+let mapleader = ','
+let maplocalleader = '\\'
 
-call plug#end()
+" standard editing mappings, using the 'control' key modifier
+nnoremap <c-a> 0v$
 
-if exists('+termguicolors')
-	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-	set termguicolors
-endif
+nnoremap <c-d> :Texplore<cr>
 
-set background=dark
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
+" uppercase current word (from and to NORMAL mode)
+nnoremap <leader>u viwU
 
-nnoremap <C-d> :NERDTreeToggle<CR>
+" open my .vimrc in a new tab
+nnoremap <leader>ev :tabe $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
-colorscheme everforest
+" nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+" nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+" nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
+
+" surround selection with single quotes
+vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
+
+" surround selection with double quotes
+vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
+
+" surround selection with backticks ('`')
+vnoremap <leader>` <esc>`<i`<esc>`>a`<esc>
+
+" quicker than pressing esc
+inoremap jk <esc>
+
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <esc> <nop>
+
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+
+" abbreviations
+
+iabbrev thne then
+iabbrev adn and
+iabbrev 42@@ abrabant@student.42.fr
+iabbrev perso@@ perso@aurelienbrabant.fr
+
+iabbrev ssig --- <cr>Aurélien Brabant<cr>Email: contact@aurelienbrabant.fr<cr>Website: https://aurelienbrabant.fr
