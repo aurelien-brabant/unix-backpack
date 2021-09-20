@@ -1,16 +1,36 @@
 set nocompatible
 set number
 set relativenumber
-syntax enable
 set wrap
-
-" Identation
+set smartindent
+set cursorline
 set tabstop=4
 set shiftwidth=4
 set showmatch
 set matchtime=2
 
-" standard keybindings, using control key
+" syntax {{{{
+
+colorscheme elflord
+syntax enable
+
+" }}}
+
+" list {{{
+
+set list
+set listchars=tab:→\ ,trail:.
+
+" }}}
+
+" statusline {{{
+
+set laststatus=2
+set statusline=%f\ \|\ FileType:\ %y\ \|\ %l/%L
+
+" }}}
+
+" mappings {{{
 
 let mapleader = ','
 let maplocalleader = '\\'
@@ -20,16 +40,9 @@ nnoremap <c-a> 0v$
 
 nnoremap <c-d> :Texplore<cr>
 
-" uppercase current word (from and to NORMAL mode)
-nnoremap <leader>u viwU
-
-" open my .vimrc in a new tab
+" .vimrc manipulation
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-" nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-" nnoremap <leader>` viw<esc>a`<esc>hbi`<esc>lel
 
 " surround selection with single quotes
 vnoremap <leader>' <esc>`<i'<esc>`>a'<esc>
@@ -40,7 +53,7 @@ vnoremap <leader>" <esc>`<i"<esc>`>a"<esc>
 " surround selection with backticks ('`')
 vnoremap <leader>` <esc>`<i`<esc>`>a`<esc>
 
-" quicker than pressing esc
+" quick <esc> replacement
 inoremap jk <esc>
 
 inoremap <left> <nop>
@@ -49,16 +62,43 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <esc> <nop>
 
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-nnoremap <up> <nop>
-nnoremap <down> <nop>
+" delete parameters operator mapping
+onoremap p i(
+onoremap in( :<c-u>normal! f(vi(<cr>
 
-" abbreviations
+"}}}
+
+" augroups {{{
+
+augroup filetype_vim
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
+
+augroup filetype_cpp
+	autocmd!
+	autocmd FileType cpp nnoremap <buffer> <localleader>- I//<space><esc>
+	autocmd FileType cpp :iabbrev <buffer> io## #include<iostream>
+augroup END
+
+augroup filetype_typescript
+	autocmd!
+	autocmd FileType javascript,typescript nnoremap <buffer> <localleader>- I//<space><esc>
+augroup END
+
+augroup filetype_markdown
+	autocmd!
+	autocmd FileType markdown set spell
+augroup end
+
+" }}}
+
+" abbreviations {{{
 
 iabbrev thne then
 iabbrev adn and
 iabbrev 42@@ abrabant@student.42.fr
 iabbrev perso@@ perso@aurelienbrabant.fr
-
 iabbrev ssig --- <cr>Aurélien Brabant<cr>Email: contact@aurelienbrabant.fr<cr>Website: https://aurelienbrabant.fr
+
+" }}}
