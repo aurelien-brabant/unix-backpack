@@ -11,7 +11,15 @@ set matchtime=2
 
 " syntax {{{{
 
-colorscheme elflord
+if has("termguicolors")
+	" enabling st support
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
+
+set background=dark
+colorscheme everforest
 syntax enable
 
 " }}}
@@ -75,10 +83,10 @@ augroup filetype_vim
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-augroup filetype_cpp
+augroup filetype_c_cpp
 	autocmd!
 	autocmd FileType cpp nnoremap <buffer> <localleader>- I//<space><esc>
-	autocmd FileType cpp :iabbrev <buffer> io## #include<iostream>
+	autocmd FileType c,cpp setlocal foldmethod=syntax foldlevel=0
 augroup END
 
 augroup filetype_typescript
