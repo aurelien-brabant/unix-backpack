@@ -9,6 +9,19 @@ set shiftwidth=4
 set showmatch
 set matchtime=2
 
+" Needed this on MacOS
+set backspace=indent,eol,start
+
+" Plug {{{
+
+	call plug#begin('~/.vim/plugged')
+
+	Plug 'sainnhe/everforest'
+
+	call plug#end()
+
+" }}}
+
 " syntax {{{{
 
 if has("termguicolors")
@@ -19,6 +32,7 @@ if has("termguicolors")
 endif
 
 set background=dark
+let g:everforest_background = 'hard'
 colorscheme everforest
 syntax enable
 
