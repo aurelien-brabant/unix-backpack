@@ -17,6 +17,8 @@ set backspace=indent,eol,start
 	call plug#begin('~/.vim/plugged')
 
 	Plug 'sainnhe/everforest'
+	Plug 'tree-sitter/tree-sitter'
+	Plug 'tree-sitter/tree-sitter-cpp'
 
 	call plug#end()
 
@@ -100,7 +102,7 @@ augroup END
 augroup filetype_c_cpp
 	autocmd!
 	autocmd FileType cpp nnoremap <buffer> <localleader>- I//<space><esc>
-	autocmd FileType c,cpp setlocal foldmethod=syntax foldlevel=0
+	autocmd FileType c,cpp setlocal foldmethod=syntax foldlevel=99
 augroup END
 
 augroup filetype_typescript

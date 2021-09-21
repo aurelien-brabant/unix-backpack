@@ -3,7 +3,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='ls -G'
 PS1="\[\e[33m\]\W \[\e[32m\]⇨ \[\e[m\] "
 
 alias gcl="git clone"
