@@ -8,6 +8,17 @@ set tabstop=4
 set shiftwidth=4
 set showmatch
 set matchtime=2
+set encoding=utf-8
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+
+if has("patch-8.1.1564")
+	set signcolumn=number
+else
+	set signcolumn=yes
+endif
 
 " Needed this on MacOS
 set backspace=indent,eol,start
@@ -17,8 +28,7 @@ set backspace=indent,eol,start
 	call plug#begin('~/.vim/plugged')
 
 	Plug 'sainnhe/everforest'
-	Plug 'tree-sitter/tree-sitter'
-	Plug 'tree-sitter/tree-sitter-cpp'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	call plug#end()
 
@@ -89,6 +99,18 @@ inoremap <esc> <nop>
 " delete parameters operator mapping
 onoremap p i(
 onoremap in( :<c-u>normal! f(vi(<cr>
+
+" CoC
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+	  let col = col('.') - 1
+	    return !col |
+endfunction
 
 "}}}
 
