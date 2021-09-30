@@ -27,12 +27,14 @@ set backspace=indent,eol,start
 
 	call plug#begin('~/.vim/plugged')
 
-	Plug 'sainnhe/everforest'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+	Plug 'sheerun/vim-polyglot'
+	Plug 'robertmeta/nofrils'
 
 	call plug#end()
 
-" }}}
+"}}}
 
 " syntax {{{{
 
@@ -43,10 +45,8 @@ if has("termguicolors")
 	set termguicolors
 endif
 
-set background=dark
-let g:everforest_background = 'hard'
-colorscheme everforest
-syntax enable
+colorscheme nofrils-dark
+
 
 " }}}
 
@@ -92,8 +92,8 @@ inoremap jk <esc>
 
 inoremap <left> <nop>
 inoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
 inoremap <esc> <nop>
 
 " delete parameters operator mapping
@@ -111,6 +111,8 @@ function! s:check_back_space() abort
 	  let col = col('.') - 1
 	    return !col |
 endfunction
+
+tnoremap jk <C-\><C-n>
 
 "}}}
 

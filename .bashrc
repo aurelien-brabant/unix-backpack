@@ -11,7 +11,10 @@ alias gp="git push"
 alias gc="git commit"
 alias gst="git status"
 alias tmux="TERM=screen-256color tmux"
+alias ls="ls --color -1"
 
-export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.yarn/bin"
+export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.yarn/bin:/usr/local/bin:/usr/sbin:/sbin"
 
 export MYVIMRC="$HOME/.vimrc"
+
+neofetch
