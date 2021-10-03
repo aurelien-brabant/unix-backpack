@@ -15,14 +15,21 @@ function getTime()
 	timeString="$(date +%Hh%M)"
 }
 
+function getRamUsage()
+{
+	ramUsage="$(free -h | awk 'NR==2 { print $3"/"$2 }')"
+}
+
 timeString=
 batsString=
+ramUsage="NaN/Nan"
 kernelString="$(uname -r)"
 
 while true
 do
 	getBatteries
 	getTime
-	printf "$kernelString | $batsString | $timeString"
+	getRamUsage
+	printf "RAM: $ramUsage | $kernelString | $batsString | $timeString"
 	sleep 1
 done
