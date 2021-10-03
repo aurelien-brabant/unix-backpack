@@ -18,6 +18,7 @@ alias gc="git commit"
 alias gst="git status"
 alias tmux="TERM=screen-256color tmux"
 alias ls="ls --color -1"
+alias sway="XDG_CURRENT_DESKTOP=sway dbus-run-session sway"
 
 export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.yarn/bin:/usr/local/bin:/usr/sbin:/sbin"
 
