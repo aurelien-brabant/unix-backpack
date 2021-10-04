@@ -30,7 +30,7 @@ set backspace=indent,eol,start
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	Plug 'sheerun/vim-polyglot'
-	Plug 'robertmeta/nofrils'
+	Plug 'chriskempson/base16-vim'
 
 	call plug#end()
 
@@ -45,8 +45,10 @@ if has("termguicolors")
 	set termguicolors
 endif
 
-colorscheme nofrils-dark
-
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
 
 " }}}
 
@@ -123,10 +125,14 @@ augroup filetype_vim
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+augroup filetype_swayconfig
+	autocmd!
+	autocmd FileType swayconfig setlocal foldmethod=marker
+
 augroup filetype_c_cpp
 	autocmd!
 	autocmd FileType cpp nnoremap <buffer> <localleader>- I//<space><esc>
-	autocmd FileType c,cpp setlocal foldmethod=syntax foldlevel=99
+	autocmd FileType c,cpp setlocal foldmethod=marker
 augroup END
 
 augroup filetype_typescript
