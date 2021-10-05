@@ -15,6 +15,8 @@ set $down j
 set $up k
 set $right l
 
+set $lock_bg ~/Pictures/lockscreen.png
+
 # Your preferred terminal emulator
 set $term foot
 
@@ -28,7 +30,7 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # Output configuration {{{
 
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-exec swagbg -i ~/Pictures/garuda.jpg -m fill
+output "*" bg /home/abrabant/Pictures/garuda.jpg fill
 #
 # Example configuration:
 #
@@ -39,7 +41,9 @@ exec swagbg -i ~/Pictures/garuda.jpg -m fill
 ### Idle configuration
 #
 # Example configuration:
-#
+
+bindsym $mod+escape exec swaylock -i $lock_bg
+
 # exec swayidle -w \
 #          timeout 300 'swaylock -f -c 000000' \
 #          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -137,13 +141,21 @@ set $ws1 www
 set $ws2 dev
 set $ws3 sys
 set $ws4 social
-set $ws5 doc
+set $ws5 mail
+set $ws6 gfx
+set $ws7 VM
+set $ws8 doc
+set $ws9 misc
+set $ws10 misc2
 
-workspace www output DP-4
-workspace dev output DP-4
-workspace sys output DP-4
-workspace social output DP-4
-workspace doc output DP-5
+workspace www output "*"
+workspace dev output "*"
+workspace sys output "*"
+workspace social output "*"
+workspace mail output "*"
+workspace gfx output "*"
+workspace VM output "*"
+workspace doc output "*"
 
 # Switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -151,11 +163,11 @@ bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
