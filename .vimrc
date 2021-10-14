@@ -13,6 +13,7 @@ set nobackup
 set nowritebackup
 set cmdheight=2
 set updatetime=300
+set noswapfile
 
 if has("patch-8.1.1564")
 	set signcolumn=number
@@ -25,7 +26,11 @@ set backspace=indent,eol,start
 
 " Plug {{{
 
-	call plug#begin('~/.vim/plugged')
+	if has('nvim')
+		call plug#begin(stdpath('data') . '/plugged')
+	else
+		call plug#begin('~/.vim/plugged')
+	endif
 
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -156,3 +161,32 @@ iabbrev perso@@ perso@aurelienbrabant.fr
 iabbrev ssig --- <cr>Aurélien Brabant<cr>Email: contact@aurelienbrabant.fr<cr>Website: https://aurelienbrabant.fr
 
 " }}}
+
+" CoC config {{{
+
+if has('nvim')
+	inoremap <silent><expr> <c-space> coc#refresh()
+else
+	inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction

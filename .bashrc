@@ -42,3 +42,5 @@ alias sway="XDG_CURRENT_DESKTOP=sway dbus-run-session sway"
 
 
 export MYVIMRC="$HOME/.vimrc"
+
+alias vim="nvim"
