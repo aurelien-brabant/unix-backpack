@@ -36,6 +36,9 @@ set backspace=indent,eol,start
 	Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 	Plug 'sheerun/vim-polyglot'
 	Plug 'chriskempson/base16-vim'
+	Plug 'rhysd/vim-clang-format'
+	Plug 'Yggdroot/indentLine'
+	Plug 'mkitt/tabline.vim'
 
 	call plug#end()
 
@@ -138,6 +141,7 @@ augroup filetype_c_cpp
 	autocmd!
 	autocmd FileType cpp nnoremap <buffer> <localleader>- I//<space><esc>
 	autocmd FileType c,cpp setlocal foldmethod=marker
+	autocmd FileType c,cpp ClangFormatAutoEnable
 augroup END
 
 augroup filetype_typescript
