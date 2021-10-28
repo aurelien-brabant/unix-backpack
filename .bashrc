@@ -11,14 +11,29 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 export PATH="$PATH:$HOME/.cargo/bin/:$HOME/.yarn/bin:/usr/local/bin:/usr/sbin:/sbin"
 
-if [ "$(uname)" == "Linux" ]; then
+# Replace standard UNIX utilities by more handy ones {{{
+
+if command -v bat &> /dev/null
+then
+	alias cat="bat"
+elif command -v batcat &> /dev/null
+then
+	alias cat="batcat"
+fi
+
+if command -v exa &> /dev/null
+then
+	alias ls="exa -l"
+elif [ "$(uname)" == "Linux" ]; then
 	alias ls='ls --color -1'
 else
 	alias ls='ls -G1'
 fi
 
+# }}}
+
 # 42-specific configuration
-if echo "$(hostname)" | grep '42' > /dev/null; then
+if echo "$(cat /etc/hostname)" | grep '42' > /dev/null; then
 	if [ "$(uname)" == "Darwin" ]; then
 		printf "42 configuration loaded\n"
 		if test -d "$HOME/.brew"; then
@@ -29,18 +44,37 @@ if echo "$(hostname)" | grep '42' > /dev/null; then
 	fi
 fi
 
-PS1="\[\e[33m\]\W \[\e[32m\]⇨ \[\e[m\] "
+export PS1="\[\033[38;5;9m\][\[$(tput sgr0)\]\[\033[38;5;14m\]\u\[$(tput sgr0)\]\[\033[38;5;7m\]@\[$(tput sgr0)\]\[\033[38;5;13m\]\h\[$(tput sgr0)\] - \[$(tput sgr0)\]\[\033[38;5;8m\]\w\[$(tput sgr0)\]\[\033[38;5;9m\]]\[$(tput sgr0)\] \[$(tput sgr0)\]\[\033[38;5;7m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
 
-alias gcl="git clone"
-alias gp="git push"
-alias gc="git commit"
-alias gst="git status"
-alias tmux="TERM=screen-256color tmux"
+if command -v git &> /dev/null;
+then
+	alias gcl="git clone"
+	alias gp="git push"
+	alias gc="git commit"
+	alias gst="git status"
+fi
+
+if command -v tmux &> /dev/null
+then
+	alias tmux="TERM=$TERM tmux";
+fi
 
 # need to specialize that too
-alias sway="XDG_CURRENT_DESKTOP=sway dbus-run-session sway"
-
+if command -v sway &> /dev/null;
+then
+	alias sway="XDG_CURRENT_DESKTOP=sway dbus-run-session sway"
+fi
 
 export MYVIMRC="$HOME/.vimrc"
 
-alias vim="nvim"
+if command -v nvim &> /dev/null;
+then
+	alias vim="nvim"
+fi
+
+# load private aliases if any
+private_aliases_path="$HOME/.alias.priv.sh"
+if [ -f $private_aliases_path ];
+then
+	source $private_aliases_path
+fi
